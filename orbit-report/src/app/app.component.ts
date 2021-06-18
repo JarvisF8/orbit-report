@@ -12,10 +12,10 @@ export class AppComponent {
   sourceList: Satellite[];
   displayList: Satellite[];
   
-  constructor() {
-    this.sourceList = [];
-    this.displayList = [];
-    let satellitesUrl = 'https://handlers.education.launchcode.org/static/satellites.json';
+   constructor() {
+      this.sourceList = [];
+      this.displayList = [];
+      let satellitesUrl = 'https://handlers.education.launchcode.org/static/satellites.json';
 
       window.fetch(satellitesUrl).then(function(response) {
          response.json().then(function(data) {
@@ -30,9 +30,9 @@ export class AppComponent {
          }.bind(this));
       }.bind(this));
    
-  }
+   }
 
-  search(searchTerm: string): void {
+   search(searchTerm: string): void {
     let matchingSatellites: Satellite[] = [];
     searchTerm = searchTerm.toLowerCase();
     for(let i=0; i < this.sourceList.length; i++) {
@@ -44,6 +44,5 @@ export class AppComponent {
     // assign this.displayList to be the array of matching satellites
     // this will cause Angular to re-make the table, but now only containing matches
     this.displayList = matchingSatellites;
- }
-
+   }
 }
