@@ -4,6 +4,7 @@ export class Satellite {
     type: string;
     operational: boolean;
     launchDate: string;
+    isOdd: boolean = true;
 
     constructor(name: string, type:string, launchDate: string, orbitType: string, operational: boolean) {
         this.name = name;
@@ -19,4 +20,16 @@ export class Satellite {
         }
         return false;
     }
+
+    isEven(): boolean {
+        if(this.isOdd === true) {
+            this.isOdd = false;
+            return this.isOdd;
+        }
+        else {
+            this.isOdd = true;
+            return this.isOdd;
+        }
+     }
+
 }
