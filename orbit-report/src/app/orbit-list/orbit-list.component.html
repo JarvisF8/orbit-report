@@ -3,9 +3,9 @@
    <tr class="header-row">
       <th class="sortable" (click) = "sort('name')">Name</th>
       <th class="sortable" (click) = "sort('type')">Type</th>
-      <th>Operational</th>
-      <th>Orbit Type</th>
-      <th>Launch Date</th>
+      <th class="sortable" (click) = "sort('operational')">Operational</th>
+      <th class="sortable" (click) = "sort('orbitType')">Orbit Type</th>
+      <th class="sortable" (click) = "sort('launchDate')">Launch Date</th>
    </tr>
    <!-- TODO: put <tr *ngFor=""></tr> here -->
    <tr *ngFor="let satellite of satellites">
