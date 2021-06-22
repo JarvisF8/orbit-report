@@ -10,7 +10,7 @@ export class OrbitListComponent implements OnInit {
   
    @Input() satellites: Satellite[];
    isSorted: boolean = false;
-
+   
    constructor() { }
 
    ngOnInit() { }
@@ -42,4 +42,11 @@ export class OrbitListComponent implements OnInit {
          this.isSorted = false;
       }
    }
+   
+   // addSatellite(name: string, type: string, operational: boolean, orbit: string, date: string): void {
+   //    let satellite = new Satellite(name, type, date, orbit, operational);
+   //    console.log(satellite)
+   //    this.satellites.push(satellite);
+   // }
+      
 }

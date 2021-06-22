@@ -30,6 +30,5 @@ export class Satellite {
             this.isOdd = true;
             return this.isOdd;
         }
-     }
-
+    }
 }

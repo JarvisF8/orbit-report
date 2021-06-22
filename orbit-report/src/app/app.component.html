@@ -1,8 +1,20 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<app-orbit-list [satellites] = "displayList"></app-orbit-list>
+<div>
+    <app-orbit-list [satellites] = "displayList"></app-orbit-list>
+</div> 
 <div class="search-form">
     <input #searchTerm (keyup.enter) = "search(searchTerm.value)">
     <button #seachTerm (click) = "search(searchTerm.value)">Search</button>
+</div> 
+<div>
+    <form>
+        <input #satName type="text" placeholder="Name">
+        <input #satType type="text" style="width: 100px;" placeholder="Type">
+        <input #satOperational type="boolean" style="width: 110px;" placeholder="Operational (T/F)">
+        <input #satOrbit type="text" style="width: 75px;" placeholder="Orbit Type">
+        <input #satDate type="text" style="width: 95px;" placeholder="Launch Date">
+        <button (click) = "addSatellite(satName.value, satType.value, satOperational.value, satOrbit.value, satDate.value)">Add Satellite</button>
+    </form>
 </div> 
 <div>
     <app-orbit-counts [satellites]="displayList"></app-orbit-counts>

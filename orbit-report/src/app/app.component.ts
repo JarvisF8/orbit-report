@@ -2,15 +2,16 @@ import { Component } from '@angular/core';
 import { Satellite } from './satellite';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+   selector: 'app-root',
+   templateUrl: './app.component.html',
+   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'orbit-report';
 
-  sourceList: Satellite[];
-  displayList: Satellite[];
+export class AppComponent {
+   title = 'orbit-report';
+
+   sourceList: Satellite[];
+   displayList: Satellite[];
   
    constructor() {
       this.sourceList = [];
@@ -25,11 +26,11 @@ export class AppComponent {
               let satellite = new Satellite(fetchedSatellites[i].name, fetchedSatellites[i].type, fetchedSatellites[i].launchDate, fetchedSatellites[i].orbitType, fetchedSatellites[i].operational);
               this.sourceList.push(satellite) 
             }
+
             // make a copy of the sourceList to be shown to the user
             this.displayList = this.sourceList.slice(0);
          }.bind(this));
-      }.bind(this));
-   
+      }.bind(this));  
    }
 
    search(searchTerm: string): void {
@@ -39,6 +40,7 @@ export class AppComponent {
       let name = this.sourceList[i].name.toLowerCase();
       let type = this.sourceList[i].type.toLowerCase();
       let orbit = this.sourceList[i].orbitType.toLowerCase();
+      let operational = this.sourceList[i].operational;
       if (name.indexOf(searchTerm) >= 0) {
          matchingSatellites.push(this.sourceList[i]);
       }
@@ -48,9 +50,20 @@ export class AppComponent {
       else if (orbit.indexOf(searchTerm) >= 0) {
          matchingSatellites.push(this.sourceList[i]);
       }
+      else if (String(operational) === searchTerm.toLowerCase()) {
+         matchingSatellites.push(this.sourceList[i]);
+      }
     }
     // assign this.displayList to be the array of matching satellites
     // this will cause Angular to re-make the table, but now only containing matches
     this.displayList = matchingSatellites;
+   }
+   
+   addSatellite(name: string, type: string, operational: boolean, orbit: string, date: string) {
+      let satelliteArray = this.sourceList;
+      let satellite = new Satellite(name, type, date, orbit, operational);
+      console.log(satellite)
+      satelliteArray.push(satellite)
+      this.displayList = satelliteArray;
    }
 }
